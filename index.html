@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d1a33" />
+    <meta
+      name="description"
+      content="北京天坛祈年殿 · TypeScript + Three.js 全程序化生成 WebGL 场景（几何、贴图、动画均由代码运行时生成）"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%230d1a33'/%3E%3Cpath d='M32 5 L53 29 H11 Z' fill='%231c3f96'/%3E%3Cpath d='M32 24 L49 41 H15 Z' fill='%232a55b8'/%3E%3Ccircle cx='32' cy='12' r='4' fill='%23d8a437'/%3E%3Crect x='20' y='41' width='24' height='3' fill='%23d8a437'/%3E%3Crect x='22' y='44' width='20' height='9' fill='%23e6e1d6'/%3E%3Crect x='15' y='53' width='34' height='5' fill='%23d9d3c6'/%3E%3C/svg%3E"
+    />
+    <title>天坛 · 祈年殿 | TypeScript + Three.js 程序化生成</title>
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <!-- 载入遮罩 -->
+    <div id="loader">
+      <div class="loader-inner">
+        <div class="loader-title">祈年殿</div>
+        <div class="loader-sub">Hall of Prayer for Good Harvests</div>
+        <div class="loader-bar-wrap"><div id="loader-bar"></div></div>
+        <div id="loader-step">正在初始化…</div>
+        <div class="loader-note">几何体 / 贴图 / 动画全部由代码在运行时程序化生成</div>
+      </div>
+    </div>
+
+    <!-- 标题卡 -->
+    <header id="title-card">
+      <h1>天坛 · 祈年殿</h1>
+      <p class="subtitle">三重檐圆形攒尖顶 · 鎏金宝顶 · 三层汉白玉台基</p>
+      <p class="tech">TypeScript · Three.js · WebGL2 · 全程序化生成</p>
+      <ul class="legend">
+        <li><b>三重檐</b>：下 / 中 / 上檐蓝琉璃瓦，反宇曲面 + 翼角起翘</li>
+        <li><b>柱网</b>：檐柱 12 · 金柱 12 · 龙井柱 4</li>
+        <li><b>斗拱</b>：每层檐 24 攒，坐斗—翘—昂—耍头</li>
+        <li><b>台基</b>：三层圆坛，望柱栏板 + 四向踏跺与御路</li>
+      </ul>
+      <p class="tips">拖拽旋转 · 滚轮缩放 · 右键平移 · 空格爆炸/重组</p>
+    </header>
+
+    <!-- 统计 -->
+    <div id="stats">— FPS</div>
+
+    <!-- 控制按钮 -->
+    <nav id="controls" aria-label="展示控制"></nav>
+
+    <!-- 轻提示 -->
+    <div id="toast" data-show="false"></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,313 @@
+/* ==================================================================
+   天坛祈年殿 · 界面样式
+   配色取自建筑本身：靛蓝琉璃 / 朱红 / 鎏金 / 汉白玉
+   ================================================================== */
+
+:root {
+  --indigo: #16295c;
+  --indigo-deep: #0b142c;
+  --cinnabar: #a8362099;
+  --gold: #d8a437;
+  --gold-soft: #f0d79a;
+  --marble: #efece3;
+  --glass: rgba(9, 17, 34, 0.62);
+  --glass-line: rgba(216, 164, 55, 0.35);
+  --font: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0a1224;
+  color: var(--marble);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  outline: none;
+}
+
+/* ---------------- 载入遮罩 ---------------- */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 40%, #16305f 0%, #0a1224 70%);
+  transition: opacity 0.6s ease;
+}
+
+#loader.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-inner {
+  text-align: center;
+  width: min(440px, 82vw);
+}
+
+.loader-title {
+  font-size: 40px;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--gold-soft);
+  text-shadow: 0 0 26px rgba(216, 164, 55, 0.45);
+}
+
+.loader-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(239, 236, 227, 0.55);
+}
+
+.loader-bar-wrap {
+  margin: 26px auto 12px;
+  height: 3px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8a5f19, var(--gold), #ffe9b0);
+  box-shadow: 0 0 12px rgba(216, 164, 55, 0.8);
+  transition: width 0.28s ease;
+}
+
+#loader-step {
+  font-size: 13px;
+  color: rgba(239, 236, 227, 0.82);
+  min-height: 20px;
+}
+
+.loader-note {
+  margin-top: 10px;
+  font-size: 11px;
+  color: rgba(239, 236, 227, 0.42);
+}
+
+/* ---------------- 标题卡 ---------------- */
+#title-card {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 20;
+  max-width: min(340px, 46vw);
+  padding: 16px 18px 14px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 10px;
+  backdrop-filter: blur(9px) saturate(1.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+}
+
+#title-card h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold-soft);
+}
+
+#title-card .subtitle {
+  margin: 6px 0 2px;
+  font-size: 12px;
+  color: rgba(239, 236, 227, 0.78);
+}
+
+#title-card .tech {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(216, 164, 55, 0.85);
+}
+
+#title-card .legend {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}
+
+#title-card .legend li {
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: rgba(239, 236, 227, 0.72);
+}
+
+#title-card .legend b {
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+#title-card .tips {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: rgba(239, 236, 227, 0.5);
+}
+
+/* ---------------- 统计 ---------------- */
+#stats {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 20;
+  padding: 7px 12px;
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(239, 236, 227, 0.82);
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+
+/* ---------------- 控制按钮 ---------------- */
+#controls {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 12px;
+  backdrop-filter: blur(9px) saturate(1.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ctl-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(239, 236, 227, 0.9);
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+}
+
+.ctl-btn:hover {
+  background: rgba(216, 164, 55, 0.16);
+  border-color: rgba(216, 164, 55, 0.55);
+  transform: translateY(-1px);
+}
+
+.ctl-btn:active {
+  transform: translateY(0);
+}
+
+.ctl-btn[data-active='true'] {
+  background: linear-gradient(180deg, rgba(216, 164, 55, 0.34), rgba(216, 164, 55, 0.16));
+  border-color: rgba(240, 215, 154, 0.75);
+  color: #fff6e2;
+  box-shadow: 0 0 14px rgba(216, 164, 55, 0.32) inset;
+}
+
+.ctl-hint {
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.32);
+  color: rgba(239, 236, 227, 0.55);
+  letter-spacing: 0.04em;
+}
+
+/* ---------------- 轻提示 ---------------- */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 96px;
+  transform: translate(-50%, 12px);
+  z-index: 25;
+  padding: 8px 16px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  color: #fff6e2;
+  background: rgba(9, 17, 34, 0.78);
+  border: 1px solid var(--glass-line);
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#toast[data-show='true'] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width: 900px) {
+  #title-card {
+    max-width: 62vw;
+    padding: 12px 14px;
+  }
+  #title-card .legend {
+    display: none;
+  }
+  #title-card h1 {
+    font-size: 17px;
+  }
+  #controls {
+    bottom: 14px;
+    gap: 6px;
+    padding: 6px;
+    width: calc(100% - 24px);
+  }
+  .ctl-btn {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .ctl-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  #stats {
+    top: auto;
+    bottom: 92px;
+    right: 12px;
+    font-size: 10.5px;
+  }
+  #title-card {
+    max-width: 74vw;
+    top: 12px;
+    left: 12px;
+  }
+}
